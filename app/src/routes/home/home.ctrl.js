@@ -16,9 +16,9 @@ const output = {
 }
 
 const process = {
-  login: (req, res) => {
+  login: async (req, res) => {
     const user = new User(req.body);
-    const response = user.login();
+    const response = await user.login();
     return res.json(response);
     // const id = req.body.id;
     // const password = req.body.password;
@@ -38,6 +38,13 @@ const process = {
     // response.success = false;
     // response.msg = "로그인 실패";
     //return res.json(response);
+  },
+
+  register: async (req, res) => {
+    const user = new User(req.body);
+    const response = await user.register();
+    console.log(response);
+    return res.json(response);
   }
 }
 
